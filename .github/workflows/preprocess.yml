@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12.7'
 
@@ -23,10 +23,10 @@ jobs:
 
       - name: Run Automation Script
         run: |
-          python Eksperimen_SML_LEVIYANDA_SALSABILA/preprocessing/automate_LEVIYANDA_SALSABILA.py
+          python preprocessing/automate_LEVIYANDA_SALSABILA.py
 
       - name: Upload Clean Data as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cleaned-dataset
           path: preprocessing/diabetes_preprocessing/diabetes_cleaned.csv
