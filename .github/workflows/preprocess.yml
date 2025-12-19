@@ -1,0 +1,32 @@
+name: Auto-Preprocessing Data
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Eksperimen_SML_LEVIYANDA_SALSABILA/preprocessing/automate_LEVIYANDA_SALSABILA.py'
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.7'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas scikit-learn ucimlrepo
+
+      - name: Run Automation Script
+        run: |
+          python Eksperimen_SML_LEVIYANDA_SALSABILA/preprocessing/automate_LEVIYANDA_SALSABILA.py
+
+      - name: Upload Clean Data as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cleaned-dataset
+          path: preprocessing/dataset_clean/diabetes_cleaned.csv
