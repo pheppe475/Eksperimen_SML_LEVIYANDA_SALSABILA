@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Automation Script
         run: |
-         python Eksperimen_SML_LEVIYANDA_SALSABILA/preprocessing/automate_LEVIYANDA_SALSABILA.py
+          python preprocessing/automate_LEVIYANDA_SALSABILA.py
 
       - name: Upload Clean Data as Artifact
         uses: actions/upload-artifact@v4
